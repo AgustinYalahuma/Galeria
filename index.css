@@ -3,34 +3,77 @@
   margin: 0;
   box-sizing: border-box;
 }
-
+body {
+  padding: 10px;
+}
 .grid-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   grid-template-rows: repeat(5, 150px);
   grid-auto-rows: 150px;
   gap: 10px;
-  padding: 10px;
 }
 
-img {
+#dropzone {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  margin-bottom: 10px;
+  border: 2px dashed #ccc;
+}
+#dropzone p {
+  font-size: 16px;
+  color: #aaa;
+}
+#dropzone.dragover {
+  border-color: #aaa;
+}
+
+.img {
+  border-radius: 6px;
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-img:first-child {
-  /* digo que la imagen vaya de la column-line 1 y que ocupe 2 columnas */
-  grid-column: 1 / span 2;
-  /* digo que la imagen vaya de la row-line 1 a la 3 */
-  grid-row: 1 / 3;
+.img-container {
+  position: relative;
+  cursor: pointer;
 }
 
-img:nth-child(6) {
-  grid-column: 2 / 4;
-  grid-row: 3 / 5;
+.img-container:hover {
+  opacity: 0.8;
 }
 
-img:nth-child(11) {
+.adj {
+  display: none;
+  height: 50px;
+  width: 50px;
+  background-color: transparent;
+  color: #fff;
+  position: absolute;
+  border: none;
+  top: 10%;
+  left: calc(50% - 25px);
+  font-size: 70px;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.adj:nth-child(2) {
+  top: 40%;
+}
+
+.adj:hover {
+  color: #aaa;
+}
+
+.expand {
   grid-row: span 2;
+  grid-column: span 2;
+}
+
+.expand .adj:nth-child(2) {
+  top: 60%;
 }
